@@ -23,7 +23,7 @@ CPUS="0.000"
 QUIRKS=""
 
 # Flag indicating local image usage
-LOCAL_FLAG=0
+LOCAL_FLAG=1
 
 build_image() {
     DOCKERFILE="$1"
