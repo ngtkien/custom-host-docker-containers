@@ -9,7 +9,7 @@ readonly DIR_SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 &&
 cd "${DIR_SCRIPT}"
 
 readonly GIT_COMMIT="$(git log -1 --format=%H | cut -c1-8)"
-readonly VARISCITE_REGISTRY="ghcr.io/varigit/var-host-docker-containers/yocto-env"
+readonly VARISCITE_REGISTRY="ghcr.io/varigit/cus-host-docker-containers/yocto-env"
 
 UBUNTU_VERSIONS_SUPPORTED=("22.04" "20.04" "18.04" "16.04" "14.04")
 UBUNTU_VERSION="20.04"
@@ -73,6 +73,9 @@ help() {
     echo
     echo "Example - Run Interactive Shell In Another Directory, mounting directories inside Docker container"
     echo "./run.sh -w ~/var-fslc-yocto -v /opt/yocto_downloads_docker:/opt/yocto_downloads -v /opt/yocto_sstate_docker:/opt/yocto_sstate"
+    echo
+	echo "Example - Run Interactive Shell In Another Directory, mounting directories inside Docker container"
+	echo "./run.sh -w $(pwd) -v /opt/yocto_downloads_docker:/opt/yocto_downloads -v /opt/yocto_sstate_docker:/opt/yocto_sstate"
     echo
     exit
 }
