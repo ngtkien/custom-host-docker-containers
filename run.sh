@@ -10,8 +10,8 @@ cd "${DIR_SCRIPT}"
 
 readonly GIT_COMMIT="$(git log -1 --format=%H | cut -c1-8)"
 readonly VARISCITE_REGISTRY="ghcr.io/varigit/var-host-docker-containers/yocto-env"
-
-UBUNTU_VERSIONS_SUPPORTED=("22.04" "20.04" "18.04" "16.04" "14.04")
+readonly ZEDER_REGISTRY="ghcr.io/ngtkien/custom-host-docker-containers/yocto-env"
+UBUNTU_VERSIONS_SUPPORTED=("22.04")
 UBUNTU_VERSION="22.04"
 WORKDIR="$(pwd)"
 SCRIPT=""
@@ -226,7 +226,7 @@ if [ $LOCAL_FLAG -eq 1 ]; then
     fi
 else
     # Pull the image if the image does not exist or the build flag is set
-    readonly IMAGE_REPO="${VARISCITE_REGISTRY}"
+    readonly IMAGE_REPO="${ZEDER_REGISTRY}"
 
     if ! docker images | awk -v IMAGE_REPO=${IMAGE_REPO} '{ if ($1 == IMAGE_REPO) print $2}' | grep -q "${DOCKER_IMAGE}" \
         || [ $BUILD_IMAGE_FLAG -eq 1 ]; then
